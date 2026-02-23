@@ -15,15 +15,8 @@ public class Lista<T>{
     public void aggiungiInTesta(T dato){
         Nodo<T> nuovoNodo = new Nodo<>(dato);
 
-        if(head == null){
-            head = nuovoNodo;
-        }else{
-            Nodo<T> attuale = head;
-            while(attuale.next != null){
-                attuale = attuale.next;
-            }
-            attuale.next = nuovoNodo;
-        }
+        nuovoNodo.next = head;
+        head = nuovoNodo;
     }
 
     public void aggiungiInCoda(T dato){
@@ -32,7 +25,7 @@ public class Lista<T>{
         if(head == null){
             head = nuovoNodo;
         }else{
-            Nodo<T> attuale = new Nodo<>(dato);
+            Nodo<T> attuale = head;
             while(attuale.next != null){
                 attuale = attuale.next;
             }
@@ -63,7 +56,7 @@ public class Lista<T>{
 
             Nodo<T> nuovoNodo = new Nodo<>(dato);
             nuovoNodo.next = attuale.next;
-            attuale = nuovoNodo.next; 
+            attuale = nuovoNodo; 
         }
     }
 
@@ -234,8 +227,8 @@ public class Lista<T>{
 
         Nodo<T> attuale = head;
         while(attuale != null){
-            stringbuilder.append(attuale);
-            stringbuilder.append("---");
+            stringbuilder.append(attuale.dato);
+            stringbuilder.append(" --- ");
             attuale = attuale.next;
         }
 
